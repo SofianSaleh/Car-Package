@@ -41,15 +41,51 @@ const getSpecificCar = (carMan, model) => {
   throw new Error('Car was not found');
 };
 
+/**
+ * This function gets all the cars that went out of production
+ */
 const getAllCarsOutofProduction = () => {
+  let arr = [];
   let vehicles = Object.values(cars[0]);
   for (const vehicle of vehicles) {
-    console.log(vehicle);
+    for (let i = 0; i < vehicle.length; i++) {
+      if (vehicle[i].Ended === null) arr.push(vehicle[i]);
+    }
   }
+
+  return arr;
 };
 
-const getAllCarsStillInProduction = () => {};
+/**
+ * This function gets all the vehicle that are still in production
+ */
+const getAllCarsStillInProduction = () => {
+  let arr = [];
+  let vehicles = Object.values(cars[0]);
+  for (const vehicle of vehicles) {
+    for (let i = 0; i < vehicle.length; i++) {
+      if (vehicle[i].Ended !== null) arr.push(vehicle[i]);
+    }
+  }
 
-const getCarsByDate = (from, to) => {};
+  return arr;
+};
 
-console.log(getAllCarsOutofProduction());
+/**
+ *
+ * @param {string} from A year to start from
+ * @param {string} to A year to finish from
+ */
+const getCarsByDate = (from, to = null) => {
+  let arr = [];
+  let vehicles = Object.values(cars[0]);
+  for (const vehicle of vehicles) {
+    for (let i = 0; i < vehicle.length; i++) {
+      if (from >= vehicle[i].Start) arr.push(vehicle[i]);
+    }
+  }
+
+  return arr;
+};
+
+console.log(getCarsByDate(2000));
