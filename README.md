@@ -7,7 +7,7 @@ this package is lightweight and easy to use.
 `npm i car-dealers`
 
 and you are good to go!
-the entier code is written in JavaScript.
+the entier code is written in TypeScript.
 
 # Functions
 
