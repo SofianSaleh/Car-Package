@@ -5,7 +5,7 @@ import cars from '../cars';
  * returns an array of manufacturers name
  * @returns {Array<string>}
  */
-const getCarManufacturers = ():any[] => {
+const getCarManufacturers = (): any[] => {
   return Object.keys(cars[0]);
 };
 
@@ -14,15 +14,15 @@ const getCarManufacturers = ():any[] => {
  * @param {string} carManufacturer
  * @returns {array<object>} an array of objects
  */
-const getCarsByManufacturer = (carManufacturer:string):any[]=> {
+const getCarsByManufacturer = (carManufacturer: string): any[] => {
   const name = `${carManufacturer
     .substring(0, 1)
     .toUpperCase()}${carManufacturer.slice(1).toLowerCase()}`;
-    if(cars[0][name]){
-
-      return cars[0][name]
-    }
-       throw new Error(`Car was not found`)
+  const carArr: any = cars[0];
+  if (carArr[name]) {
+    return carArr[name];
+  }
+  throw new Error(`Car was not found`);
 };
 
 /**
@@ -35,12 +35,12 @@ const getSpecificCar = (carMan: string, model: string) => {
     .slice(1)
     .toLowerCase()}`;
 
-  const carModel = cars[0]?[name]
+  const carModel: any = cars[0];
 
-  if (carModel) {
-    for (let i = 0; i < carModel.length; i++) {
-      if (carModel[i]['Car'].toLowerCase() == model.toLowerCase())
-        return carModel[i];
+  if (carModel[name]) {
+    for (let i = 0; i < carModel[name].length; i++) {
+      if (carModel[name][i]['Car'].toLowerCase() == model.toLowerCase())
+        return carModel[name][i];
     }
   }
   throw new Error('Car was not found');
@@ -81,18 +81,17 @@ const getAllCarsStillInProduction = () => {
  * @param {string} from A year to start from
  * @param {string} to A year to finish from
  */
-const getCarsByDate = (from:number, to:number|null = null) => {
-  console.log(to, from);
+const getCarsByDate = (from: number, to: number | null = null): any[] => {
   let arr = [];
   let vehicles = Object.values(cars[0]);
   for (const vehicle of vehicles) {
     for (let i = 0; i < vehicle.length; i++) {
-      //   console.log(from >= Number(vehicle[i].Start));
-      if (
-        from >= Number(vehicle[i].Started) &&
-        to <= Number(vehicle[i].Ended)
-      ) {
-        arr.push(vehicle[i]);
+      if (from >= Number(vehicle[i].Started)) {
+        if (to === null) {
+          arr.push(vehicle[i]);
+        } else if (to <= Number(vehicle[i].Ended)) {
+          arr.push(vehicle[i]);
+        }
       }
     }
   }
