@@ -21,15 +21,22 @@ const getCarsByManufacturer = (carManufacturer) => {
   return cars[0][name];
 };
 
+/**
+ *
+ * @param {string} carMan car manufacturer where you enter the car name
+ * @param {string} model Enter the model name
+ */
 const getSpecificCar = (carMan, model) => {
   const name = `${carMan.substring(0, 1).toUpperCase()}${carMan
     .slice(1)
     .toLowerCase()}`;
-  if (cars[0][name]) {
-    cars[0][name].forEach((arr) => {
-      console.log(arr.Car == model);
-      if (arr.Car == model) return arr;
-    });
+
+  const carModel = cars[0][name];
+  if (carModel) {
+    for (let i = 0; i < carModel.length; i++) {
+      if (carModel[i]['Car'].toLowerCase() == model.toLowerCase())
+        return carModel[i];
+    }
   }
   throw new Error('Car was not found');
 };
@@ -40,4 +47,4 @@ const getAllCarsStillInProduction = () => {};
 
 const getCarsByDate = (from, to) => {};
 
-console.log(getSpecificCar('ACura', 'CL'));
+console.log(getSpecificCar('ACura', 'Cl'));
