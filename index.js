@@ -22,10 +22,17 @@ const getCarsByManufacturer = (carManufacturer) => {
 };
 
 const getSpecificCar = (carMan, Model) => {
-  const name = `${carManufacturer
-    .substring(0, 1)
-    .toUpperCase()}${carManufacturer.slice(1).toLowerCase()}`;
-  return cars[0][name][Model];
+  const name = `${carMan.substring(0, 1).toUpperCase()}${carMan
+    .slice(1)
+    .toLowerCase()}`;
+  if (cars[0][name]) {
+    cars[0][name].forEach((arr) => {
+      console.log(arr);
+    });
+  } else {
+    throw new Error('Car was not found');
+  }
+  return;
 };
 
 const getAllCarsOutofProduction = () => {};
