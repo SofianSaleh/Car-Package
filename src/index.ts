@@ -5,7 +5,7 @@ import cars from '../cars';
  * returns an array of manufacturers name
  * @returns {Array<string>}
  */
-const getCarManufacturers = () => {
+const getCarManufacturers = ():any[] => {
   return Object.keys(cars[0]);
 };
 
@@ -14,11 +14,15 @@ const getCarManufacturers = () => {
  * @param {string} carManufacturer
  * @returns {array<object>} an array of objects
  */
-const getCarsByManufacturer = (carManufacturer) => {
+const getCarsByManufacturer = (carManufacturer:string):any[]=> {
   const name = `${carManufacturer
     .substring(0, 1)
     .toUpperCase()}${carManufacturer.slice(1).toLowerCase()}`;
-  return cars[0][name];
+    if(cars[0][name]){
+
+      return cars[0][name]
+    }
+       throw new Error(`Car was not found`)
 };
 
 /**
@@ -26,12 +30,13 @@ const getCarsByManufacturer = (carManufacturer) => {
  * @param {string} carMan car manufacturer where you enter the car name
  * @param {string} model Enter the model name
  */
-const getSpecificCar = (carMan, model) => {
+const getSpecificCar = (carMan: string, model: string) => {
   const name = `${carMan.substring(0, 1).toUpperCase()}${carMan
     .slice(1)
     .toLowerCase()}`;
 
-  const carModel = cars[0][name];
+  const carModel = cars[0]?[name]
+
   if (carModel) {
     for (let i = 0; i < carModel.length; i++) {
       if (carModel[i]['Car'].toLowerCase() == model.toLowerCase())
@@ -76,7 +81,7 @@ const getAllCarsStillInProduction = () => {
  * @param {string} from A year to start from
  * @param {string} to A year to finish from
  */
-const getCarsByDate = (from, to = null) => {
+const getCarsByDate = (from:number, to:number|null = null) => {
   console.log(to, from);
   let arr = [];
   let vehicles = Object.values(cars[0]);
@@ -95,7 +100,7 @@ const getCarsByDate = (from, to = null) => {
   return arr;
 };
 
-module.exports = {
+export {
   getCarManufacturers,
   getCarsByManufacturer,
   getSpecificCar,
