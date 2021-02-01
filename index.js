@@ -41,10 +41,15 @@ const getSpecificCar = (carMan, model) => {
   throw new Error('Car was not found');
 };
 
-const getAllCarsOutofProduction = () => {};
+const getAllCarsOutofProduction = () => {
+  let vehicles = Object.values(cars[0]);
+  for (const vehicle of vehicles) {
+    console.log(vehicle);
+  }
+};
 
 const getAllCarsStillInProduction = () => {};
 
 const getCarsByDate = (from, to) => {};
 
-console.log(getSpecificCar('ACura', 'Cl'));
+console.log(getAllCarsOutofProduction());
