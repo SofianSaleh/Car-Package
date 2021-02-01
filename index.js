@@ -21,18 +21,17 @@ const getCarsByManufacturer = (carManufacturer) => {
   return cars[0][name];
 };
 
-const getSpecificCar = (carMan, Model) => {
+const getSpecificCar = (carMan, model) => {
   const name = `${carMan.substring(0, 1).toUpperCase()}${carMan
     .slice(1)
     .toLowerCase()}`;
   if (cars[0][name]) {
     cars[0][name].forEach((arr) => {
-      console.log(arr);
+      console.log(arr.Car == model);
+      if (arr.Car == model) return arr;
     });
-  } else {
-    throw new Error('Car was not found');
   }
-  return;
+  throw new Error('Car was not found');
 };
 
 const getAllCarsOutofProduction = () => {};
