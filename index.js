@@ -81,8 +81,8 @@ const getCarsByDate = (from, to = null) => {
   let vehicles = Object.values(cars[0]);
   for (const vehicle of vehicles) {
     for (let i = 0; i < vehicle.length; i++) {
-      console.log(from >= Number(vehicle[i].Start));
-      if (from >= Number(vehicle[i].Start)) {
+      //   console.log(from >= Number(vehicle[i].Start));
+      if (from >= Number(vehicle[i].Started)) {
         arr.push(vehicle[i]);
       }
     }
