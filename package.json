@@ -16,5 +16,8 @@
     "hatchback"
   ],
   "author": "sofian-saleh",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.1.3"
+  }
 }

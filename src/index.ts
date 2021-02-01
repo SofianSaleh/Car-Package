@@ -1,5 +1,5 @@
 // Mke the functions here like routes and call the controllers
-const cars = require('./cars.js');
+import cars from '../cars';
 
 /**
  * returns an array of manufacturers name
