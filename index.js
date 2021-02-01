@@ -77,6 +77,7 @@ const getAllCarsStillInProduction = () => {
  * @param {string} to A year to finish from
  */
 const getCarsByDate = (from, to = null) => {
+  console.log(to, from);
   let arr = [];
   let vehicles = Object.values(cars[0]);
   for (const vehicle of vehicles) {
@@ -94,4 +95,11 @@ const getCarsByDate = (from, to = null) => {
   return arr;
 };
 
-console.log(getCarsByDate(2000, 2008));
+module.exports = {
+  getCarManufacturers,
+  getCarsByManufacturer,
+  getSpecificCar,
+  getAllCarsOutofProduction,
+  getAllCarsStillInProduction,
+  getCarsByDate,
+};
