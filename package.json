@@ -2,10 +2,12 @@
   "name": "car-dealers",
   "version": "1.0.0",
   "description": "A library of all the cars with their specs",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib",
   "type": "commonjs",
   "github": "https://github.com/SofianSaleh/Car-Package.git",
   "scripts": {
+    "build": "tsc -p .",
     "start": "node index.js"
   },
   "keywords": [
