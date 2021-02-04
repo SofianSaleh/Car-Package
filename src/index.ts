@@ -1,5 +1,5 @@
 // Mke the functions here like routes and call the controllers
-import cars from '../cars';
+import cars from './cars';
 
 /**
  * returns an array of manufacturers name
