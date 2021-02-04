@@ -54,7 +54,7 @@ const getAllCarsOutofProduction = () => {
   let vehicles = Object.values(cars[0]);
   for (const vehicle of vehicles) {
     for (let i = 0; i < vehicle.length; i++) {
-      if (vehicle[i].Ended === null) arr.push(vehicle[i]);
+      if (vehicle[i].Ended !== null) arr.push(vehicle[i]);
     }
   }
 
@@ -69,7 +69,7 @@ const getAllCarsStillInProduction = () => {
   let vehicles = Object.values(cars[0]);
   for (const vehicle of vehicles) {
     for (let i = 0; i < vehicle.length; i++) {
-      if (vehicle[i].Ended !== null) arr.push(vehicle[i]);
+      if (vehicle[i].Ended === null) arr.push(vehicle[i]);
     }
   }
 
