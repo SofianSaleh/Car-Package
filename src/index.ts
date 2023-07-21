@@ -1,5 +1,5 @@
 // Mke the functions here like routes and call the controllers
-import cars from './cars';
+import cars from "./cars";
 
 /**
  * returns an array of manufacturers name
@@ -39,11 +39,11 @@ const getSpecificCar = (carMan: string, model: string) => {
 
   if (carModel[name]) {
     for (let i = 0; i < carModel[name].length; i++) {
-      if (carModel[name][i]['Car'].toLowerCase() == model.toLowerCase())
+      if (carModel[name][i]["Car"].toLowerCase() == model.toLowerCase())
         return carModel[name][i];
     }
   }
-  throw new Error('Car was not found');
+  throw new Error("Car was not found");
 };
 
 /**
@@ -98,6 +98,7 @@ const getCarsByDate = (from: number, to: number | null = null): any[] => {
 
   return arr;
 };
+console.log(getCarManufacturers());
 
 export {
   getCarManufacturers,
