@@ -1,5 +1,6 @@
 // Mke the functions here like routes and call the controllers
 import cars from "./cars";
+import _ from "lodash";
 
 /**
  * returns an array of manufacturers name
@@ -82,11 +83,11 @@ const getAllCarsStillInProduction = () => {
  * @param {string} to A year to finish from
  */
 const getCarsByDate = (from: number, to: number | null = null): any[] => {
-  let arr = [];
+  let arr: any = [];
   let vehicles = Object.values(cars[0]);
   for (const vehicle of vehicles) {
     for (let i = 0; i < vehicle.length; i++) {
-      if (from >= Number(vehicle[i].Started)) {
+      if (from <= Number(vehicle[i].Started)) {
         if (to === null) {
           arr.push(vehicle[i]);
         } else if (to <= Number(vehicle[i].Ended)) {
@@ -98,7 +99,7 @@ const getCarsByDate = (from: number, to: number | null = null): any[] => {
 
   return arr;
 };
-console.log(getCarManufacturers());
+console.log(getCarsByDate(2008));
 
 export {
   getCarManufacturers,
